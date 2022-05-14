@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 1200,
+  "height": 400,
+  "data": {"url": "skyscrapers.csv"},
+  "selection":
+  {
+    "material_selection":
+    {
+      "type": "single",
+      "fields": ["material"],
+      "bind":
+      {
+        "input": "select",
+        "options": [
+          "concrete",
+          "composite",
+          "concrete/steel",
+          "masonry",
+          "precast",
+          "steel",
+          "steel/concrete"
+        ],
+        "labels": [
+          "concrete",
+          "composite",
+          "concrete/steel",
+          "masonry",
+          "precast",
+          "steel",
+          "steel/concrete"
+        ],
+        "name": "Material Type:"
+      }
+    }
+  },
+  "transform": [{"filter": {"selection": "material_selection"}}],
+  "mark": "bar",
+  "title": "Count vs Location City ",
+"encoding": {
+  "x": {"field": "location_city"},
+  "y": {
+      "aggregate": "count", "field": "location_city", "title": "Count"
+    }
+}
+}

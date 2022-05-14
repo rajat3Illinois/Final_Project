@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>
+    <meta property="og:title" content="Skyscrapers USA" />
+    <meta charset="utf-8" />
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Short description of your project" />
+    <meta property="description" content="Short description of your project" />
+</title>
+<link rel="stylesheet" href="static/idyll_styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.2"></script>
+</head>
+<body>
+    <h1 class="hed">Skyscraper</h1>
+    <img src="https://images.skyscrapercenter.com/uploads/Chicago_Downtown-2019_(CC__BY-SA)Jules__Antonio210120-060119.jpg" width="1200" height="500" border="0" padding-bottom="42"/>
+
+    <br>
+    <br>
+
+<h2 id="overview">Overview</h2>
+
+<p style="text-align:justify"> The dataset published by named as <a href="https://corgis-edu.github.io/corgis/datasets/csv/skyscrapers/skyscrapers.csv">skyscrapers.csv</a> 
+contains collected statistics about the tallest buildings all over the United States, including the materials used to develop them, the purpose of the buildings, and more. </p>
+
+
+<p style="text-align:justify">
+Below is the plot of the Location City count. One can select the material type that changes the visualization. 
+Selection Tag is used to dynamically the change the plot based on the material type.
+
+</p>
+<div id="vis2" style="margin-left: 50px;"></div>
+<script>
+    vegaEmbed('#vis2', "LocationCity.json");
+</script>
+<p> ---------------------------------------------------------------------- ---------------------------------------------------------------------- ------------------------------------------------------</p>
+
+<div id="vis3" style="margin-left: 100px;"></div>
+<script>
+    vegaEmbed('#vis3', "maps.json");
+</script>
+
+<p> ---------------------------------------------------------------------- ---------------------------------------------------------------------- ------------------------------------------------------</p>
+
+<div id="vis" style="margin-left: 100px;"></div>
+<script>
+    vegaEmbed('#vis', "Skyscrappers.json");
+</script>
+
+<script type="js" src="reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: false,
+        transition: 'fade',
+        viewDistance: 3, // to lazy load iframes
+    
+        // // optional configurations for reveald3
+        reveald3: {
+    
+             // If the previous slide is a slide further in the deck (i.e. we come back to
+             // slide from the next slide), by default the last fragment transition will be
+             // triggered to to get the last state of the visualization and simulate the
+             // the state the simulation was in when we left the slide. This can be
+             // discarded.
+             runLastState: true, //default true
+    
+             // If a special onSlideChanged transition has been set (if for example the visualization
+             // has been preloaded using the data-preload attribute, and you want a specific transition
+             // to happen only when you arrive on the slide), you can choose the delay with which such 
+             // a transition will occur (note that in the case of no data-preload, if no delay is set then
+             // the transition might not occur since the iframe might not be fully loaded yet when the 
+             // function is triggered). // default 0. 
+             onSlideChangedDelay: 400,
+    
+             // This will prefix the path attributes of the source html paths with the given path.
+             // (by default "src" if set to true or with the specified path if string)
+             mapPath: false, // default: false
+    
+             // If true, will try to locate the file at a fallback url without the mapPath prefix in case no file is found
+             // at the stipulated url with mapPath
+             tryFallbackURL: false, //default false
+    
+             // Checking for file existance has been reported to fail in rare 
+             // cases though files did exist. This option is to disable the file checking.
+             //see: https://github.com/gcalmettes/reveal.js-d3/issues/10
+             disableCheckFile: false, //default false,
+        },
+    
+        // Reveal.js plugins
+        dependencies: [
+    
+            { src: '../reveal.js' },
+    
+        ]
+    });
+    
+    </script>
+</body>
+
+</html>

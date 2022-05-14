@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 600,
+  "data": {"url": "skyscrapers.csv"},
+  "params": [
+    { "name": "cornerRadius", "value": 40,
+      "bind": {"input": "range", "min": 0, "max": 80, "step": 0.5} }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadius": {"expr": "cornerRadius"},
+    "color": "darkgreen"
+  },
+  "title": "Material Used",
+  "encoding": {
+  "x": {"field": "material"},
+  "y": {
+    "aggregate": "count", "field": "material"}
+}
+}

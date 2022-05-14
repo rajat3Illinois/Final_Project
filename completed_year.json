@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 600,
+    "transform": [
+        {
+            "bin": true,
+            "field": "status_completed_year",
+            "as": "Sum_Count"
+        }
+      ],
+    "mark": "bar",
+    "data": {"url": "skyscrapers.csv"},
+    "title": "Location vs Completed Year",
+    "encoding": {
+    "x": {"field": "Sum_Count", "type": "ordinal", "bin": {"binned": true, "step": 1}},
+    "y": {"aggregate":"count"}
+  }
+  }

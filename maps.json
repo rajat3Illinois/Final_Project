@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Map View",
+  "projection": {
+    "type": "albersUsa"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "us-10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white"
+      }
+    },
+    {
+        "data": {
+          "url": "us-state-capitals.json"
+        },
+        "encoding": {
+          "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+          },
+          "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+          }
+        },
+        "layer": [{
+          "mark": {
+            "type": "text",
+            "dy": -10
+          },
+          "encoding": {
+            "text": {"field": "city", "type": "nominal"}
+          }
+        }]
+      },
+    {
+      "data": {
+        "url": "skyscrapers.csv"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "location_longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "location_latitude",
+          "type": "quantitative"
+        },
+      "tooltip": [
+      {"field": "name", "type": "nominal", "title": "Building"}]  
+      },
+      "layer": [{
+        "mark": {
+          "type": "square",
+          "color": "orange"
+        }
+      }, 
+      {
+        "mark": {
+          "type": "text",
+          "dy": -10
+        }
+      }]
+    }
+  ]
+}
